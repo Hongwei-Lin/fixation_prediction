@@ -19,7 +19,7 @@ venv/
 Thumbs.db
 
 # Project artifacts
-data/
+/data/
 checkpoints/
 wandb/
 *.pth

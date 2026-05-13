@@ -1,0 +1,21 @@
+# SALICON dataset configuration
+name: salicon
+
+# Paths — adjust if your data lives elsewhere
+root: D:/datasets/salicon
+images_dir: images
+fixations_dir: fixations
+maps_dir: maps
+
+# Image preprocessing
+image_size: [256, 256]  # height, width (resized for training)
+target_size: [256, 256] # heatmap target size
+
+# Splits
+train_split: train
+val_split: val
+test_split: test
+
+# DataLoader settings
+num_workers: 4   # parallel data loading processes (0 = main process only, good for debugging)
+pin_memory: true  # faster GPU transfer
