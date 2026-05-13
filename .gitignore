@@ -39,3 +39,6 @@ logs/
 # Scratch/exploration files
 scratch.py
 scratch_*.py
+
+# Hydra experiment outputs
+outputs/

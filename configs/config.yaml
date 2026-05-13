@@ -1,0 +1,30 @@
+# Top-level config. Composes data, model, training.
+defaults:
+  - data: salicon
+  - model: unet
+  - training: default
+  - _self_
+
+# Project metadata
+project_name: fixation_prediction
+experiment_name: dev_run
+
+# Paths (for outputs)
+output_dir: outputs
+checkpoint_dir: ${output_dir}/${experiment_name}/checkpoints
+log_dir: ${output_dir}/${experiment_name}/logs
+
+# Device
+device: cuda
+gpu_id: 0
+
+# W&B 
+wandb:
+  enabled: false  # off for now; we'll turn on when we add it
+  project: fixation_prediction
+  entity: null    # your wandb username or team
+
+# Hydra-specific settings
+hydra:
+  run:
+    dir: ${output_dir}/${experiment_name}/hydra

@@ -1,0 +1,15 @@
+# U-Net baseline model configuration
+name: unet
+
+# Encoder
+encoder: resnet50          
+encoder_pretrained: true   # use ImageNet weights
+freeze_encoder: false
+
+# Decoder
+decoder_channels: [256, 128, 64, 32, 16]  # channels at each upsampling stage
+use_batchnorm: true
+
+# Output
+out_channels: 1            # single channel saliency heatmap
+final_activation: sigmoid  # squash output to [0, 1]

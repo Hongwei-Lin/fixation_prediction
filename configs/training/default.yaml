@@ -1,0 +1,30 @@
+# Training hyperparameters
+batch_size: 16
+num_epochs: 50
+
+# Optimizer
+optimizer:
+  name: adamw
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+
+# Learning rate schedule
+scheduler:
+  name: cosine
+  warmup_epochs: 2
+
+# Loss weighting (KLD + alpha*CC + beta*NSS)
+loss:
+  kld_weight: 1.0
+  cc_weight: 1.0
+  nss_weight: 1.0
+
+# Mixed precision (use less GPU memory, train faster)
+use_amp: true
+
+# Checkpointing
+save_every_n_epochs: 5
+keep_last_n_checkpoints: 3
+
+# Reproducibility
+seed: 42
