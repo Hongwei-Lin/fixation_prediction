@@ -35,3 +35,7 @@ logs/
 # Environment
 .env
 "@ | Set-Content -Path .gitignore -Encoding UTF8
+
+# Scratch/exploration files
+scratch.py
+scratch_*.py
