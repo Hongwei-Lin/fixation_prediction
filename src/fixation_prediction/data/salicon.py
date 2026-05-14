@@ -127,3 +127,31 @@ class SaliconDataset(Dataset):
             "fixations": fixations_tensor,
             "image_id": img_id,
         }
+    
+
+def salicon_collate(
+    batch: list[dict],
+) -> dict:
+    """Collate function for SaliconDataset.
+
+    Default PyTorch collation stacks tensors with torch.stack, which requires
+    identical shapes. Fixation tensors have variable length (N, 2) per sample,
+    so they cannot be stacked. This function stacks the fixed-shape tensors
+    normally and keeps fixations as a list of per-sample tensors.
+
+    Args:
+        batch: List of sample dicts as returned by SaliconDataset.__getitem__.
+
+    Returns:
+        Dict with keys:
+            "image":     stacked tensor, shape (B, 3, H, W).
+            "saliency":  stacked tensor, shape (B, 1, H, W).
+            "fixations": list of B tensors, each shape (N_i, 2).
+            "image_id":  list of B strings.
+    """
+    return {
+        "image": torch.stack([s["image"] for s in batch]),
+        "saliency": torch.stack([s["saliency"] for s in batch]),
+        "fixations": [s["fixations"] for s in batch],
+        "image_id": [s["image_id"] for s in batch],
+    }
