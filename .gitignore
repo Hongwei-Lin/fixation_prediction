@@ -42,3 +42,6 @@ scratch_*.py
 
 # Hydra experiment outputs
 outputs/
+
+# Per-run visualizations
+visualizations/
